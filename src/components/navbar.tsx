@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import Logout from "./Logout";
+import Logout from "./logout";
 import { useState } from "react";
 
 const Navbar = () => {
