@@ -1,6 +1,21 @@
-
+import { useEffect, useState } from "react";
+import { API_URL } from "../config";
+import ProductList from "../components/ProductList";
 
 const Home = () => {
+  const [products, setProducts] = useState([]);
+
+  const fetchProducts = async () => {
+    const response = await fetch(API_URL);
+    const data = await response.json();
+    // console.log("data", data);
+    setProducts(data)
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   return (
     <div className="p-8">
       <div className="container bg-white">
@@ -8,7 +23,7 @@ const Home = () => {
           Featured Products
         </h1>
       </div>
-      <h1>DUMMY LINE Home</h1>
+      <ProductList products={products}/>
     </div>
   );
 };
