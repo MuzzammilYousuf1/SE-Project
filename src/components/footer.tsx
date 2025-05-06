@@ -1,4 +1,5 @@
 import React from "react";
+import ecofyLogo from "../assets/ecofyLogo.jpg";
 
 interface FooterProps {
   title: string;
@@ -7,13 +8,12 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ title, text, description }) => {
-  const imageUrl = "https://psdc-react-ecommerce-app.netlify.app/react.svg";
 
   return (
     <div className="relative z-50 bg-[#191F33]">
       <div className="flex flex-col items-center px-4 py-12">
         <div className="flex items-center space-x-4">
-          <img src={imageUrl} alt="BWT-Logo" className="w-12 bg-transparent" />
+          <img src={ecofyLogo} alt="BWT-Logo" className="w-12 bg-transparent" />
           <h1 className="text-3xl font-semibold tracking-wider text-white">
             {title}
           </h1>

@@ -1,5 +1,7 @@
 import { FormEvent, useState } from "react";
 import Input from "../components/Input";
+import ecofyLogo from "../assets/ecofyLogo.jpg";
+
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -30,8 +32,8 @@ const SignUp = () => {
         <form onSubmit={handleSignUp} className="container  p-8 bg-white">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
             <img
-              className="mx-auto h-10 w-auto"
-              src="https://psdc-react-ecommerce-app.netlify.app/react.svg"
+              className="mx-auto h-20 w-auto"
+              src={ecofyLogo}
               alt="Your Company"
             />
           </div>
@@ -90,7 +92,7 @@ const SignUp = () => {
       <div className="hidden items-center justify-center bg-indigo-100 lg:flex lg:w-1/2">
         <div className="p-8 text-center">
           <h3 className="mb-6 text-2xl font-bold text-gray-900">
-            Why Join Us?
+            Why Buy from ECOFY?
           </h3>
           <p className="mb-4 text-lg text-gray-700">
             Experience the best ecommerce app for all your needs.

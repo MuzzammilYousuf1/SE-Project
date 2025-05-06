@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import Logout from "./logout";
 import { useState } from "react";
+import ecofyLogo from "../assets/ecofyLogo.jpg";
+
 
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
@@ -24,7 +26,7 @@ const Navbar = () => {
           className="flex items-center gap-3"
         >
           <img
-            src="https://psdc-react-ecommerce-app.netlify.app/react.svg"
+            src={ecofyLogo}
             className="h-8 w-auto mx-5 sm:h-10 md:h-12 lg:h-12"
             alt="Logo"
           />

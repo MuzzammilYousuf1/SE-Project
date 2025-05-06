@@ -1,5 +1,7 @@
 import { FormEvent, useState } from "react";
 import Input from "../components/Input";
+import ecofyLogo from "../assets/ecofyLogo.jpg";
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -22,8 +24,8 @@ const Login = () => {
         <form onSubmit={handleLogin} className="container  p-6 bg-white">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
             <img
-              className="mx-auto h-10 w-auto"
-              src="https://psdc-react-ecommerce-app.netlify.app/react.svg"
+              className="mx-auto h-20 w-auto"
+              src={ecofyLogo}
               alt="Your Company"
             />
           </div>

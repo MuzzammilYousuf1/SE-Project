@@ -23,8 +23,8 @@ const Cart = () => {
   return (
     <div className="container mx-auto mb-10 max-w-6xl bg-white p-6">
       <h1 className="mb-6 text-3xl font-bold text-gray-800">Shopping Cart</h1>
-      <div className="flex flex-col gap-6 lg:flex-row">
-        <div className="w-full lg:w-3/4">
+      <div className="flex flex-col gap-6 ">
+        <div className="w-full">
           <div className="rounded-lg border border-gray-200 bg-white p-6">
             {cartItems.length === 0 ? (
               <p>Your cart is empty.</p>
@@ -36,7 +36,7 @@ const Cart = () => {
                 >
                   <div className="flex items-center space-x-4">
                     <img
-                      className="h-20 w-20 object-cover"
+                      className="h-22 w-20"
                       src={item.image}
                       alt={item.title}
                     />
@@ -78,12 +78,12 @@ const Cart = () => {
           </div>
         </div>
         <button
-        className="mt-4 w-full rounded bg-blue-500 hover:bg-blue-600 px-4 py-2 text-white"
+        className="mt-4 w-full rounded bg-red-500 hover:bg-red-600 px-4 py-2 text-white"
         onClick={handleClearCart}
       >
         Clear Cart
       </button>
-        <div className="w-full lg:w-1/4">
+        <div className="w-full">
           <div className="rounded-lg border border-gray-200 bg-white p-6">
             <h2 className="mb-4 text-xl font-bold text-gray-800">Summary</h2>
             <div className="mb-2 flex justify-between">
