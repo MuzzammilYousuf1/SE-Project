@@ -2,22 +2,47 @@ import { FormEvent, useState } from "react";
 import Input from "../components/Input";
 import ecofyLogo from "../assets/ecofyLogo.jpg";
 
-
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = (e: FormEvent) => {
-    e.preventDefault()
+  const handleLogin = async (e: FormEvent) => {
+    e.preventDefault();
+
     if (email && password) {
-      localStorage.setItem('login', 'true')
-      window.location.href = '/'
+      try {
+        const response = await fetch("http://localhost:5000/api/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ email, password })
+        });
+
+        if (response.ok) {
+          localStorage.setItem("login", "true");
+          window.location.href = "/";
+        } else {
+          const data = await response.json();
+          if (data.message === "User not found") {
+            setError("User not found");
+            setTimeout(() => {
+              window.location.href = "/signup";
+              
+            }, 2000);
+          } else {
+            setError(data.message || "Login failed");
+          }
+        }
+      } catch (err) {
+        setError("Server error, try again.");
+      }
     } else {
-      setError('Incorrect Email')
+      setError("Please enter your email and password.");
     }
-  }
-  
+  };
+
   return (
     <div>
       <div className="h-screen px-4">

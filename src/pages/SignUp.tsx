@@ -2,7 +2,6 @@ import { FormEvent, useState } from "react";
 import Input from "../components/Input";
 import ecofyLogo from "../assets/ecofyLogo.jpg";
 
-
 const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -10,22 +9,48 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSignUp = (e: FormEvent) => {
-    e.preventDefault()
+  const handleSignUp = async (e: FormEvent) => {
+    e.preventDefault();
+
     if (email && password) {
-      if (!(password === confirmPassword)) {
-       setError('Your Passwords are not matching') 
-      }
-      else{
-        localStorage.setItem('login', 'true')
-      window.location.href = '/'
+      if (password !== confirmPassword) {
+        setError("Your Passwords are not matching");
+        return;
       }
 
+      try {
+        const response = await fetch("http://localhost:5000/api/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ name, email, password })
+        });
+
+        if (response.ok) {
+          localStorage.setItem("login", "true");
+          window.location.href = "/"; // Redirect to home if signup is successful
+        } else {
+          const data = await response.json();
+          
+          if (data.message === "User already exists") {
+            setError("User already exists");
+            setTimeout(() => {
+              window.location.href = "/login";
+              
+            }, 2000);
+          } else {
+            setError(data.message || "Signup failed");
+          }
+        }
+      } catch (err) {
+        setError("Server error, try again.");
+      }
     } else {
-      setError('Please enter your name, email and password.')
+      setError("Please enter your name, email and password.");
     }
-  }
-  
+  };
+
   return (
     <div className="flex">
       <div className="w-full lg:w-1/2 h-screen">
