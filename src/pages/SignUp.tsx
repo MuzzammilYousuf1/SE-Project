@@ -29,16 +29,12 @@ const SignUp = () => {
 
         if (response.ok) {
           localStorage.setItem("login", "true");
-          window.location.href = "/"; // Redirect to home if signup is successful
+          window.location.href = "/login"; // Redirect to home if signup is successful
         } else {
           const data = await response.json();
-          
+
           if (data.message === "User already exists") {
             setError("User already exists");
-            setTimeout(() => {
-              window.location.href = "/login";
-              
-            }, 2000);
           } else {
             setError(data.message || "Signup failed");
           }
@@ -71,8 +67,8 @@ const SignUp = () => {
               name="name"
               placeholder="Your Name"
               onChange={(e) => setName(e.target.value)}
-              // error={error}
-              
+            // error={error}
+
             />
 
             <Input
@@ -82,7 +78,7 @@ const SignUp = () => {
               name="email"
               placeholder="Enter your email"
               onChange={(e) => setEmail(e.target.value)}
-              // error={error}
+            // error={error}
             />
 
             <Input
@@ -107,10 +103,11 @@ const SignUp = () => {
 
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-full"
+              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-full mb-3"
             >
               Sign Up
             </button>
+            <span className="">Already have an account <a href="/login" className="text-blue-500">Login</a></span>
           </div>
         </form>
       </div>

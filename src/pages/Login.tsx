@@ -27,10 +27,6 @@ const Login = () => {
           const data = await response.json();
           if (data.message === "User not found") {
             setError("User not found");
-            setTimeout(() => {
-              window.location.href = "/signup";
-              
-            }, 2000);
           } else {
             setError(data.message || "Login failed");
           }
@@ -79,10 +75,11 @@ const Login = () => {
 
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-full"
+              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-full mb-3"
             >
                 Sign In
             </button>
+            <span className="">Already have an account <a href="/signup" className="text-blue-500">Signup</a></span>
           </div>
         </form>
       </div>

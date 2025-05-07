@@ -14,8 +14,6 @@ const Navbar = () => {
   const navLinks = [
     { title: "Home", link: "/", isProtected: true },
     { title: "Cart", link: "/cart", isProtected: true },
-    { title: "Login", link: "/login", isProtected: false },
-    { title: "Sign Up", link: "/signup", isProtected: false },
   ];
 
   return (
